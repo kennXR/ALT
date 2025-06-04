@@ -24,8 +24,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Favicon -->
-		<link rel="icon" type="image/png" href="/img/Sol.png" />
-		<link rel="apple-touch-icon" href="/img/Sol.png" />
+		<link rel="icon" type="image/png" href="img/Sol.png" />
+		<link rel="apple-touch-icon" href="img/Sol.png" />
 		<meta name="theme-color" content="#5c1818" />
 		
 		<!-- Open Graph / Facebook -->
@@ -33,14 +33,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="/img/Sol.png" />
+		<meta property="og:image" content="img/Sol.png" />
 		
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content="/img/Sol.png" />
+		<meta property="twitter:image" content="img/Sol.png" />
 		
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
