@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Illustrations Content">
+  <div class="container">
+    <div class="banner-title">
+      <h1>My Illustrations</h1>
+      <p class="banner-subtitle">A collection of my creative work</p>
+    </div>
+    <div class="content-grid">
+      <!-- Aquí irá el contenido de las ilustraciones -->
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+</style> 

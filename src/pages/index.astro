@@ -1,11 +1,321 @@
+<!DOCTYPE html>
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="RETH – Creative development">
+	<div class="reth-bg-texture">
+		<div class="reth-frame">
+			<img src="/img/Sol.png" alt="Sol" class="reth-sun reth-sun-left" draggable="false" />
+			<img src="/img/Sol.png" alt="Sol" class="reth-sun reth-sun-right" draggable="false" />
+			
+			<div class="reth-stars">
+				<svg class="reth-star reth-star-1" viewBox="0 0 32 32" style="width: 2.5vw; height: 2.5vw;"><polygon points="16,2 18,14 30,16 18,18 16,30 14,18 2,16 14,14" fill="#fff" opacity="0.7"/></svg>
+				<svg class="reth-star reth-star-2" viewBox="0 0 18 18" style="width: 1.4vw; height: 1.4vw;"><polygon points="9,1 10,8 17,9 10,10 9,17 8,10 1,9 8,8" fill="#fff" opacity="0.5"/></svg>
+				<svg class="reth-star reth-star-3" viewBox="0 0 12 12" style="width: 1vw; height: 1vw;"><polygon points="6,1 7,6 11,6 7,7 6,11 5,7 1,6 5,6" fill="#fff" opacity="0.4"/></svg>
+				<svg class="reth-star reth-star-4" viewBox="0 0 18 18" style="width: 1.2vw; height: 1.2vw;"><polygon points="9,1 10,8 17,9 10,10 9,17 8,10 1,9 8,8" fill="#fff" opacity="0.35"/></svg>
+				<svg class="reth-star reth-star-5" viewBox="0 0 14 14" style="width: 0.9vw; height: 0.9vw;"><polygon points="7,1 8,7 13,7 8,8 7,13 6,8 1,7 6,7" fill="#fff" opacity="0.3"/></svg>
+				<svg class="reth-star reth-star-6" viewBox="0 0 10 10" style="width: 0.7vw; height: 0.7vw;"><polygon points="5,1 6,5 9,5 6,6 5,9 4,6 1,5 4,5" fill="#fff" opacity="0.25"/></svg>
+			</div>
+
+			<div class="reth-content">
+				<div class="reth-title">
+					<a href="/about" class="reth-title-link">RETH</a>
+				</div>
+				<div class="reth-line"></div>
+				<div class="reth-subtitle">Creative development</div>
+
+				<div class="reth-icons-row">
+					<div class="reth-icon-col">
+						<span class="reth-icon-label">Illustrations</span>
+						<a href="/illustrations">
+							<img src="/img/Ojo.png" alt="Illustrations" class="reth-icon-img" />
+						</a>
+					</div>
+					<div class="reth-icon-col">
+						<span class="reth-icon-label">Animations</span>
+						<a href="/animations">
+							<img src="/img/Animacion.png" alt="Animations" class="reth-icon-img" />
+						</a>
+					</div>
+					<div class="reth-icon-col">
+						<span class="reth-icon-label">Photographies</span>
+						<a href="/photographies">
+							<img src="/img/Foto.png" alt="Photographies" class="reth-icon-img" />
+						</a>
+					</div>
+					<div class="reth-icon-col">
+						<span class="reth-icon-label">Scripts</span>
+						<a href="/scripts">
+							<img src="/img/Scripts.png" alt="Scripts" class="reth-icon-img" />
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="reth-frame-deco"></div>
+		</div>
+	</div>
 </Layout>
+<style>
+:root {
+	--main-bg: linear-gradient(135deg, #7a2323 80%, #5a1818 100%),
+		repeating-linear-gradient(120deg, rgba(255,255,255,0.03) 0 0.15vw, transparent 0.15vw 3vw),
+		repeating-linear-gradient(60deg, rgba(255,255,255,0.02) 0 0.08vw, transparent 0.08vw 2vw);
+	--frame-bg: #5a1818;
+	--frame-radius: 3vw;
+	--frame-border: 0.2vw solid #fff;
+	--frame-shadow: 0 0 0 0.6vw #7a2323, 0 0 2vw 0 rgba(0,0,0,0.13);
+	--text-main: #fff;
+	--text-label: #cbb7a0;
+}
+html, body {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Layout principal desktop */
+@media (min-width: 701px) {
+	.reth-bg-texture {
+		height: 100vh;
+		width: 100vw;
+		background: var(--main-bg);
+		background-blend-mode: multiply;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+	.reth-frame {
+		position: relative;
+		width: 85vw;
+		max-width: 1100px;
+		height: 100vh;
+		background: var(--frame-bg);
+		border-radius: var(--frame-radius);
+		border: var(--frame-border);
+		box-shadow: var(--frame-shadow);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		padding: 0 2vw;
+		overflow: visible;
+	}
+	.reth-content {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+/* Layout móvil: scroll permitido */
+@media (max-width: 700px) {
+	.reth-bg-texture {
+		min-height: 100vh;
+		width: 100vw;
+		background: var(--main-bg);
+		background-blend-mode: multiply;
+		display: block;
+		overflow: auto;
+	}
+	.reth-frame {
+		width: 98vw;
+		max-width: 100vw;
+		min-height: 100vh;
+		background: var(--frame-bg);
+		border-radius: var(--frame-radius);
+		border: var(--frame-border);
+		box-shadow: var(--frame-shadow);
+		margin: 0 auto;
+		padding: 2vw 1vw;
+		box-sizing: border-box;
+		position: relative;
+		overflow: visible;
+	}
+	.reth-content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		min-height: 0;
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+/* Marco decorativo */
+.reth-frame-deco {
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+	border-radius: var(--frame-radius);
+	border: 0.2vw solid rgba(255,255,255,0.13);
+	z-index: 1;
+}
+.reth-frame::before, .reth-frame::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	width: 9vw;
+	height: 2vw;
+	background: var(--frame-bg);
+	border: var(--frame-border);
+	border-radius: 1.2vw 1.2vw 2vw 2vw / 1.2vw 1.2vw 2vw 2vw;
+	z-index: 3;
+}
+.reth-frame::before { top: -1vw; transform: translateX(-50%); }
+.reth-frame::after { bottom: -1vw; transform: translateX(-50%) rotate(180deg); }
+
+/* Soles */
+.reth-sun {
+	position: absolute;
+	top: 50%;
+	width: 38vw;
+	height: auto;
+	transform: translateY(-50%);
+	z-index: 2;
+	opacity: 0.93;
+	user-select: none;
+	pointer-events: none;
+	will-change: transform;
+}
+.reth-sun-left {
+	left: -18vw;
+	animation: rotate-sun-left 18s linear infinite;
+}
+.reth-sun-right {
+	right: -18vw;
+	transform: translateY(-50%) scaleX(-1);
+	animation: rotate-sun-right 18s linear infinite;
+}
+@keyframes rotate-sun-left {
+	0% { transform: translateY(-50%) rotate(0deg); }
+	100% { transform: translateY(-50%) rotate(8deg); }
+}
+@keyframes rotate-sun-right {
+	0% { transform: translateY(-50%) scaleX(-1) rotate(0deg); }
+	100% { transform: translateY(-50%) scaleX(-1) rotate(-8deg); }
+}
+
+/* Estrellas animadas */
+.reth-stars { position: absolute; width: 100%; height: 100%; left: 0; top: 0; pointer-events: none; z-index: 4; }
+.reth-star { position: absolute; filter: blur(0.2px); animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+.reth-star-1 { left: 3.5%; top: 8%; animation: float-star-1 6s infinite; width: 2.5vw; height: 2.5vw; }
+.reth-star-2 { right: 7%; bottom: 10%; animation: float-star-2 6s infinite; width: 1.4vw; height: 1.4vw; }
+.reth-star-3 { left: 50%; top: 90%; animation: float-star-3 6s infinite; width: 1vw; height: 1vw; }
+.reth-star-4 { left: 18%; top: 22%; animation: float-star-4 7s infinite; width: 1.2vw; height: 1.2vw; }
+.reth-star-5 { right: 18%; top: 35%; animation: float-star-5 5.5s infinite; width: 0.9vw; height: 0.9vw; }
+.reth-star-6 { left: 60%; bottom: 18%; animation: float-star-6 8s infinite; width: 0.7vw; height: 0.7vw; }
+@keyframes float-star-1 { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-1vw) scale(1.08); } 100% { transform: translateY(0) scale(1); } }
+@keyframes float-star-2 { 0% { transform: translateX(0) scale(1); } 50% { transform: translateX(1vw) scale(0.95); } 100% { transform: translateX(0) scale(1); } }
+@keyframes float-star-3 { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(1vw) scale(1.12); } 100% { transform: translateY(0) scale(1); } }
+@keyframes float-star-4 { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-0.7vw) scale(1.1); } 100% { transform: translateY(0) scale(1); } }
+@keyframes float-star-5 { 0% { transform: translateX(0) scale(1); } 50% { transform: translateX(-0.8vw) scale(0.92); } 100% { transform: translateX(0) scale(1); } }
+@keyframes float-star-6 { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-0.5vw) scale(1.15); } 100% { transform: translateY(0) scale(1); } }
+
+/* Contenido central */
+.reth-title, .reth-title-link, .reth-line, .reth-subtitle, .reth-icon-label {
+	color: #fff !important;
+}
+.reth-title {
+	font-size: 4.5vw;
+	margin-bottom: 0.5vw;
+	letter-spacing: 0.05em;
+	font-family: var(--font-title, 'Romanesco', cursive);
+}
+.reth-title-link {
+	text-decoration: none;
+	transition: text-shadow 0.2s, color 0.2s;
+	cursor: pointer;
+}
+.reth-title-link:hover, .reth-title-link:focus {
+	color: #fffbe6;
+	text-shadow: 0 0 8px #fffbe6, 0 0 2px #fff;
+}
+.reth-line {
+	width: 60%;
+	height: 0.2vw;
+	background: #fff;
+	margin: 0 auto 1.2vw auto;
+	opacity: 0.7;
+}
+.reth-subtitle {
+	font-size: 1.8vw;
+	margin-bottom: 2.5vw;
+	opacity: 0.9;
+	font-family: var(--font-content, 'Edu NSW ACT Cursive', cursive);
+}
+.reth-icons-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 4vw;
+}
+.reth-icon-col {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 8vw;
+}
+.reth-icon-label {
+	font-size: 1.2vw;
+	margin-bottom: 0.7vw;
+	letter-spacing: 0.01em;
+	font-family: var(--font-content, 'Edu NSW ACT Cursive', cursive);
+}
+.reth-icon-img {
+	width: 12vw;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	transition: transform 0.25s cubic-bezier(.4,1.5,.5,1),
+		filter 0.25s cubic-bezier(.4,1.5,.5,1),
+		box-shadow 0.25s cubic-bezier(.4,1.5,.5,1);
+}
+.reth-icon-group:hover .reth-icon-img,
+.reth-icon-group:focus-within .reth-icon-img,
+.reth-icon-group a:focus .reth-icon-img,
+.reth-icon-group a:active .reth-icon-img {
+	transform: scale(1.22);
+	z-index: 2;
+	filter: drop-shadow(0 0 32px #fffbe6) drop-shadow(0 0 12px #fff) drop-shadow(0 0 4px #fff);
+	box-shadow: 0 0 32px 8px #fffbe6, 0 0 12px 2px #fff;
+}
+.reth-icon-group:active .reth-icon-img {
+	transform: scale(1.22);
+}
+@media (max-width: 900px) {
+	.reth-title { font-size: 6vw; }
+	.reth-content { max-width: 98vw; }
+	.reth-icon-img { width: 18vw; }
+	.reth-icons-row { gap: 3vw; }
+	.reth-sun { width: 22vw; }
+	.reth-sun-left { left: -10vw; }
+	.reth-sun-right { right: -10vw; }
+}
+@media (max-width: 600px) {
+	.reth-title { font-size: 8vw; }
+	.reth-subtitle { font-size: 3vw; }
+	.reth-icon-label { font-size: 2.5vw; }
+	.reth-icon-img { width: 28vw; left: -5vw; right: -5vw; }
+	.reth-sun { width: 14vw; }
+	.reth-sun-left { left: -5vw; }
+	.reth-sun-right { right: -5vw; }
+}
+</style>

@@ -1,0 +1,81 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="RETH – Creative development">
+	<section class="banner bg-primary banner-frame">
+		<div class="banner-sun banner-sun-left">
+			<img src="/img/Sol.png" alt="Sun" draggable="false" />
+		</div>
+
+		<div class="banner-content">
+			<div class="banner-title">
+				<h1><a href="/about">RETH</a></h1>
+				<p class="banner-subtitle">Creative development</p>
+			</div>
+
+			<div class="category-grid">
+				<a href="/illustrations" class="category-item">
+					<div class="category-icon">
+						<img src="/img/Ojo.png" alt="Illustrations" />
+					</div>
+					<span class="category-label">Illustrations</span>
+				</a>
+				<a href="/animations" class="category-item">
+					<div class="category-icon">
+						<img src="/img/Animacion.png" alt="Animations" />
+					</div>
+					<span class="category-label">Animations</span>
+				</a>
+				<a href="/photographies" class="category-item">
+					<div class="category-icon">
+						<img src="/img/Foto.png" alt="Photographies" />
+					</div>
+					<span class="category-label">Photographies</span>
+				</a>
+				<a href="/scripts" class="category-item">
+					<div class="category-icon">
+						<img src="/img/Scripts.png" alt="Scripts" />
+					</div>
+					<span class="category-label">Scripts</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="banner-sun banner-sun-right">
+			<img src="/img/Sol.png" alt="Sun" draggable="false" />
+		</div>
+	</section>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .placeholder {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style> 
