@@ -1,0 +1,29 @@
+---
+const { count = 16 } = Astro.props;
+const starPolygons = [
+  '16,4 18,14 28,16 18,18 16,28 14,18 4,16 14,14',
+  '10,2 11,8 18,10 11,12 10,18 9,12 2,10 9,8',
+  '9,2 10,7 16,9 10,11 9,16 8,11 2,9 8,7',
+  '7,1 8,5 13,7 8,9 7,13 6,9 1,7 6,5',
+  '5,1 6,4 9,5 6,6 5,9 4,6 1,5 4,4',
+  '6,1 7,4 11,6 7,8 6,11 5,8 1,6 5,4',
+  '8,2 9,6 14,8 9,10 8,14 7,10 2,8 7,6',
+  '11,3 13,9 20,11 13,13 11,19 9,13 2,11 9,9',
+  '4,1 5,3 7,4 5,5 4,7 3,5 1,4 3,3',
+  '7,2 8,5 12,7 8,9 7,12 6,9 2,7 6,5',
+];
+const starSizes = [32, 20, 18, 14, 10, 12, 16, 22, 8, 14, 10, 12, 16, 18, 14, 20];
+---
+<div class="animated-bg">
+  {Array.from({ length: count }).map((_, i) => (
+    <svg
+      class={`bg-star star${(i % 16) + 1}`}
+      width={starSizes[i % starSizes.length]}
+      height={starSizes[i % starSizes.length]}
+      viewBox={`0 0 ${starSizes[i % starSizes.length]} ${starSizes[i % starSizes.length]}`}
+      aria-hidden="true"
+    >
+      <polygon points={starPolygons[i % starPolygons.length]} fill="white" />
+    </svg>
+  ))}
+</div> 

@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AnimatedStars from '../../components/AnimatedStars.astro';
+---
+<Layout title="Poems">
+  <div class="reth-scripts-bg">
+    <div class="reth-scripts-frame">
+      <a href="/" class="reth-scripts-sol-deco-link">
+        <img src="/img/Sol.png" alt="Sol" class="reth-scripts-sol-deco" />
+      </a>
+      <div class="links-list reth-poems-links">
+        <a href="/escritos/LA VIDA DE LA NUBE EN EL ALBA.pdf" target="_blank" class="link-item">LA VIDA DE LA NUBE EN EL ALBA</a>
+        <a href="/escritos/Mala y áspera.pdf" target="_blank" class="link-item">Mala y áspera</a>
+        <a href="/escritos/las LÍNEAS.pdf" target="_blank" class="link-item">Las LÍNEAS</a>
+      </div>
+      <div class="reth-scripts-frame-deco"></div>
+    </div>
+    <AnimatedStars count={16} />
+  </div>
+</Layout>
+
+<style>
+@import url('../../styles/global.css');
+.reth-scripts-bg {
+  width: 100vw;
+  height: 100vh;
+  background: var(--main-bg);
+  position: relative;
+  overflow: hidden;
+}
+.reth-scripts-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85vw;
+  max-width: 1200px;
+  height: 70vh;
+  min-height: 480px;
+  background: #a12b2b;
+  border-radius: 3vw;
+  border: var(--frame-border);
+  box-shadow: var(--frame-shadow);
+  z-index: 2;
+  overflow: visible;
+}
+.reth-scripts-frame-deco {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 3vw;
+  border: 0.2vw solid #fff;
+  z-index: 3;
+}
+.reth-scripts-sol-deco-link {
+  position: absolute;
+  top: 0.8vw;
+  left: 1vw;
+  z-index: 10;
+  display: block;
+  width: 13vw;
+  min-width: 120px;
+  max-width: 220px;
+  height: auto;
+  cursor: pointer;
+}
+.reth-scripts-sol-deco {
+  width: 100%;
+  height: auto;
+  opacity: 0.97;
+  pointer-events: none;
+}
+.reth-poems-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+.links-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .link-item {
+    color: #fff;
+    font-size: 1.3rem;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 0.7rem 2.5rem;
+    border-radius: 2rem;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    font-family: inherit;
+    letter-spacing: 0.03em;
+  }
+  .link-item:hover, .link-item:focus {
+    background: #fff;
+    color: #7a2323;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
+  }
+  @media (max-width: 900px) {
+    h1 { font-size: 6vw; }
+    .banner-sun img { width: 22vw; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 8vw; }
+    .banner-sun img { width: 14vw; }
+  }
+</style> 

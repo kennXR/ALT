@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AnimatedStars from '../components/AnimatedStars.astro';
+---
+
+<Layout title="Links">
+  <div style="width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; position: relative;">
+    <a href="/" class="banner-sun banner-sun-left" style="width: 20%; min-width: 120px; max-width: 350px; text-decoration: none;">
+      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
+    </a>
+    <div style="width: 60%; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 3rem; padding: 0 2vw; z-index: 2;">
+      <div style="text-align: center;">
+        <h1>Links</h1>
+        <p class="banner-subtitle">My Social Media & More</p>
+      </div>
+      <div class="links-list">
+        <!-- Aquí puedes agregar tus enlaces -->
+        <a href="https://www.instagram.com/everything__reth/?igsh=MTd2NGo5d2R3NXFnMA%3D%3D&utm_source=qr#" target="_blank" class="link-item">Instagram</a>
+        <a href="https://x.com/evryingreth?s=11&t=Wix7gZ0NoDhj-zISc3owPw" target="_blank" class="link-item">X</a>
+        <a href="mailto:evrying.reth@gmail.com" class="link-item">Email</a>
+      </div>
+    </div>
+    <a href="/" class="banner-sun banner-sun-right" style="width: 20%; min-width: 120px; max-width: 350px; text-decoration: none;">
+      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
+    </a>
+  </div>
+  <AnimatedStars count={16} />
+  <div class="animated-planets">
+    <svg class="planet planet1" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="#e2d2b0" opacity="0.7"/><ellipse cx="16" cy="16" rx="14" ry="4" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.5"/></svg>
+    <svg class="planet planet2" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="6" fill="#cbb7a0" opacity="0.6"/></svg>
+    <svg class="comet comet1" width="40" height="16" viewBox="0 0 40 16"><ellipse cx="32" cy="8" rx="7" ry="4" fill="#fff" opacity="0.7"/><rect x="0" y="7" width="28" height="2" fill="#fff" opacity="0.3" rx="1"/></svg>
+  </div>
+</Layout>
+
+<style>
+  @import url('../styles/global.css');
+  .banner-sun {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  .banner-subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0;
+    opacity: 0.9;
+  }
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .link-item {
+    color: #fff;
+    font-size: 1.3rem;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 0.7rem 2.5rem;
+    border-radius: 2rem;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    font-family: inherit;
+    letter-spacing: 0.03em;
+  }
+  .link-item:hover, .link-item:focus {
+    background: #fff;
+    color: #7a2323;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
+  }
+  @media (max-width: 900px) {
+    h1 { font-size: 6vw; }
+    .banner-sun img { width: 22vw; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 8vw; }
+    .banner-sun img { width: 14vw; }
+  }
+  .animated-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-star {
+    position: absolute;
+    opacity: 0.8;
+    animation: star-twinkle 2.5s infinite alternate;
+  }
+  .star1 { left: 20vw; top: 18vh; animation-delay: 0.5s; }
+  .star2 { right: 18vw; top: 22vh; animation-delay: 1.2s; }
+  .star3 { left: 40vw; top: 10vh; animation-delay: 1.7s; }
+  .star4 { left: 60vw; top: 30vh; animation-delay: 0.9s; }
+  .star5 { right: 10vw; bottom: 18vh; animation-delay: 2.2s; }
+  @keyframes star-twinkle {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0.3; transform: scale(1.2); }
+  }
+  .animated-planets {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .planet, .comet {
+    position: absolute;
+    filter: blur(0.5px) drop-shadow(0 0 4px #fff8);
+    opacity: 0.7;
+  }
+  .planet1 { left: 12vw; top: 60vh; animation: planet-move1 12s infinite alternate ease-in-out; }
+  .planet2 { right: 18vw; bottom: 18vh; animation: planet-move2 10s infinite alternate-reverse ease-in-out; }
+  .comet1 { left: 60vw; top: 8vh; animation: comet-move1 7s infinite alternate-reverse linear; }
+  @keyframes planet-move1 { 0% { transform: translateY(0); } 100% { transform: translateY(-18px) scale(1.1); } }
+  @keyframes planet-move2 { 0% { transform: translateX(0); } 100% { transform: translateX(-22px) scale(0.95); } }
+  @keyframes comet-move1 { 0% { transform: translateX(0) scaleX(1); opacity: 0.7; } 100% { transform: translateX(60px) scaleX(1.2); opacity: 0.2; } }
+</style> 

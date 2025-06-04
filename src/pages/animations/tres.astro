@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Tres">
+  <div class="reth-scripts-bg">
+    <a href="/" class="reth-scripts-sol-deco-link">
+      <img src="/img/SolYLuna.png" alt="Sol y Luna" class="reth-scripts-sol-deco" />
+    </a>
+    <div class="reth-scripts-frame">
+      <h1 class="reth-anim-title">Tres</h1>
+      <div class="reth-scripts-frame-deco"></div>
+    </div>
+  </div>
+</Layout>
+<style>
+@import url('../../styles/global.css');
+.reth-anim-title {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 4vw;
+  font-family: var(--font-title);
+  letter-spacing: 0.04em;
+  text-align: center;
+  z-index: 10;
+}
+.reth-scripts-sol-deco-link {
+  position: absolute;
+  top: 0.8vw;
+  left: 1vw;
+  z-index: 10;
+  display: block;
+  width: 13vw;
+  min-width: 120px;
+  max-width: 220px;
+  height: auto;
+  cursor: pointer;
+}
+.reth-scripts-sol-deco {
+  width: 100%;
+  height: auto;
+  opacity: 0.97;
+  pointer-events: none;
+}
+</style> 

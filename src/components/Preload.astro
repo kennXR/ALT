@@ -1,11 +1,22 @@
-
-
 <div class="preload">
-  <div class="preload-content">
-    <div class="images-container">
-      <img src="/img/Luna.png" alt="Moon" class="moon-image" />
-      <img src="/img/Sol.png" alt="Sun" class="sun-image" />
-      <img src="/img/Luna.png" alt="Moon Inverted" class="moon-image inverted" />
+  <div class="preload-frame">
+    <svg class="preload-border" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <rect x="2" y="2" width="96" height="96" rx="6" fill="none" stroke="white" stroke-width="1.5"/>
+      <path d="M2,12 Q2,2 12,2" stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M88,2 Q98,2 98,12" stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M98,88 Q98,98 88,98" stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M12,98 Q2,98 2,88" stroke="white" stroke-width="1.5" fill="none"/>
+    </svg>
+    <div class="preload-content">
+      <img src="/img/Luna.png" alt="Moon" class="moon-image left" />
+      <div class="preload-center">
+        <img src="/img/Sol.png" alt="Sun" class="sun-image" />
+        <div class="preload-stars">
+          <svg width="32" height="32" viewBox="0 0 32 32" class="star"><polygon points="16,4 18,14 28,16 18,18 16,28 14,18 4,16 14,14" fill="white"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" class="star" style="margin-left: 8px;"><polygon points="10,2 11,8 18,10 11,12 10,18 9,12 2,10 9,8" fill="white"/></svg>
+        </div>
+      </div>
+      <img src="/img/Luna.png" alt="Moon Inverted" class="moon-image right" />
     </div>
   </div>
 </div>
@@ -15,73 +26,104 @@
 
   .preload {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #501b1b;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #972c2c;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 9999;
     transition: opacity 4s ease-out;
     font-family: 'Edu NSW ACT Cursive', cursive;
     color: white;
   }
-
-  .preload-content {
-    width: 80%;
-    height: 80%;
-    background-color: #9b2c2c;
+  .preload-frame {
+    position: relative;
+    width: 92vw;
+    height: 80vh;
+    max-width: 1200px;
+    max-height: 700px;
+    background: transparent;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    clip-path: polygon(
-      0% 10%, 10% 0%, 90% 0%, 100% 10%,
-      100% 90%, 90% 100%, 10% 100%, 0% 90%
-    );
-    margin: 8px;
-    border: 8px solid white;
   }
-
-  .preload-content::before {
-    content: '';
+  .preload-border {
     position: absolute;
-    inset: 4px;
-    background-color: #9b2c2c;
-    clip-path: polygon(
-      0% 10%, 10% 0%, 90% 0%, 100% 10%,
-      100% 90%, 90% 100%, 10% 100%, 0% 90%
-    );
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2;
   }
-
-  .images-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    padding: 0 20px;
+  .preload-content {
     position: relative;
-    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
   }
-
-  .sun-image {
-    width: 500px;
-    height: auto;
-    object-fit: contain;
-  }
-
   .moon-image {
-    width: 200px;
+    width: 13vw;
+    max-width: 180px;
+    min-width: 80px;
     height: auto;
     object-fit: contain;
+    z-index: 3;
+    filter: drop-shadow(0 0 2px #fff8) brightness(1.1);
   }
-
-  .moon-image.inverted {
+  .moon-image.left {
+    margin-left: 2vw;
+    transform: scaleX(1);
+  }
+  .moon-image.right {
+    margin-right: 2vw;
     transform: scaleX(-1);
   }
-
+  .preload-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    z-index: 3;
+  }
+  .sun-image {
+    width: 32vw;
+    max-width: 420px;
+    min-width: 180px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 8px #fff5);
+  }
+  .preload-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: -2vw;
+    margin-bottom: 1vw;
+    gap: 0.5vw;
+  }
+  .star {
+    display: inline-block;
+    filter: drop-shadow(0 0 2px #fff8);
+  }
+  @media (max-width: 900px) {
+    .preload-frame { height: 90vh; }
+    .sun-image { width: 44vw; }
+    .moon-image { width: 18vw; }
+  }
+  @media (max-width: 600px) {
+    .preload-frame { height: 98vw; min-height: 320px; }
+    .sun-image { width: 60vw; min-width: 100px; }
+    .moon-image { width: 22vw; min-width: 40px; }
+    .preload-stars { margin-top: -4vw; }
+  }
   .preload.fade-out {
     opacity: 0;
     pointer-events: none;

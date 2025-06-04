@@ -1,129 +1,267 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AnimatedStars from '../components/AnimatedStars.astro';
 ---
 
 <Layout title="Scripts">
-  <div style="width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; position: relative;">
-    <div class="banner-sun banner-sun-left" style="width: 20%; min-width: 120px; max-width: 350px;">
-      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
-    </div>
-    <div style="width: 60%; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 3rem; padding: 0 2vw; z-index: 2;">
-      <div style="text-align: center;">
-        <h1>Scripts</h1>
-        <p class="banner-subtitle">Code & Development</p>
+  <div class="reth-scripts-bg">
+    <a href="/" class="reth-scripts-solyluna-link">
+      <img src="/img/SolYLuna.png" alt="Sol y Luna" class="reth-scripts-solyluna" />
+    </a>
+    <div class="reth-scripts-frame">
+      <div class="reth-scripts-panel reth-scripts-panel-left">
+        <img src="/img/Luna2.png" alt="Luna" class="reth-scripts-panel-img" />
+        <div class="reth-scripts-panel-stars">
+          <span class="reth-scripts-star" style="top:18%;left:70%;"></span>
+          <span class="reth-scripts-star" style="top:70%;left:30%;"></span>
+        </div>
       </div>
-      <div class="category-grid">
-        <a href="/scripts/content" class="category-item" target="_blank">
-          <div class="category-icon">
-            <img src="/img/Scripts.png" alt="Scripts" />
+      <div class="reth-scripts-content">
+        <h1 class="reth-scripts-title">Scripts</h1>
+        <div class="reth-scripts-line"></div>
+        <p class="reth-scripts-subtitle">A bit of my broken mind</p>
+        <div class="reth-scripts-categories">
+          <div class="reth-scripts-category">
+            <a href="/scripts/poems" class="reth-scripts-icon-link">
+              <div class="reth-scripts-icon-wrap">
+                <img src="/img/Scripts.png" alt="Poems" class="reth-scripts-icon" />
+              </div>
+            </a>
+            <span class="reth-scripts-label">Poems</span>
           </div>
-        </a>
+          <div class="reth-scripts-category">
+            <a href="/scripts/tales" class="reth-scripts-icon-link">
+              <div class="reth-scripts-icon-wrap">
+                <img src="/img/Scripts.png" alt="Tales" class="reth-scripts-icon" />
+              </div>
+            </a>
+            <span class="reth-scripts-label">Tales</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="banner-sun banner-sun-right" style="width: 20%; min-width: 120px; max-width: 350px;">
-      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
+      <div class="reth-scripts-panel reth-scripts-panel-right">
+        <img src="/img/Luna2.png" alt="Pluma" class="reth-scripts-panel-img reth-scripts-panel-img-flip" />
+        <div class="reth-scripts-panel-stars">
+          <span class="reth-scripts-star" style="top:18%;left:30%;"></span>
+          <span class="reth-scripts-star" style="top:70%;left:70%;"></span>
+        </div>
+      </div>
+      <div class="reth-scripts-frame-deco"></div>
     </div>
   </div>
 </Layout>
 
+<AnimatedStars count={16} />
+
 <style>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-  }
-
-  .scripts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 2rem;
-  }
-
-  .script-card {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .script-header {
-    padding: 1.5rem;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .script-header h3 {
-    margin: 0;
-    color: #333;
-  }
-
-  .language {
-    background-color: #e0e0e0;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    color: #666;
-  }
-
-  .script-content {
-    padding: 1.5rem;
-    background-color: #1e1e1e;
-  }
-
-  pre {
-    margin: 0;
-    overflow-x: auto;
-  }
-
-  code {
-    color: #d4d4d4;
-    font-family: 'Courier New', Courier, monospace;
-  }
-
-  .script-footer {
-    padding: 1rem 1.5rem;
-    display: flex;
-    gap: 1rem;
-    background-color: #f5f5f5;
-  }
-
-  .download-btn, .view-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-  }
-
-  .download-btn {
-    background-color: #333;
-    color: #fff;
-  }
-
-  .view-btn {
-    background-color: #e0e0e0;
-    color: #333;
-  }
-
-  .download-btn:hover {
-    background-color: #444;
-  }
-
-  .view-btn:hover {
-    background-color: #d0d0d0;
-  }
-
-  @media (max-width: 768px) {
-    .scripts-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+@import url('../styles/global.css');
+.reth-scripts-bg {
+  width: 100vw;
+  height: 100vh;
+  background: var(--main-bg);
+  position: relative;
+  overflow: hidden;
+}
+.reth-scripts-solyluna-link {
+  position: absolute;
+  top: 1.5vw;
+  left: 1.5vw;
+  z-index: 10;
+  display: block;
+  cursor: pointer;
+}
+.reth-scripts-solyluna {
+  width: 10vw;
+  min-width: 80px;
+  max-width: 160px;
+  opacity: 0.93;
+  display: block;
+}
+.reth-scripts-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85vw;
+  max-width: 1200px;
+  height: 70vh;
+  min-height: 480px;
+  background: var(--frame-bg);
+  border-radius: 3vw;
+  border: var(--frame-border);
+  box-shadow: var(--frame-shadow);
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  z-index: 2;
+  overflow: visible;
+}
+.reth-scripts-frame-deco {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 3vw;
+  border: 0.2vw solid rgba(255,255,255,0.13);
+  z-index: 3;
+}
+.reth-scripts-panel {
+  width: 22vw;
+  min-width: 180px;
+  max-width: 270px;
+  background: none;
+  border-radius: 0 0 12vw 12vw/0 0 18vw 18vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 4;
+  margin-top: -2vw;
+}
+.reth-scripts-panel-left {
+  border-top-left-radius: 3vw;
+  border-bottom-left-radius: 3vw;
+  border-right: 1.5px solid #fff2;
+}
+.reth-scripts-panel-right {
+  border-top-right-radius: 3vw;
+  border-bottom-right-radius: 3vw;
+  border-left: 1.5px solid #fff2;
+}
+.reth-scripts-panel-img {
+  width: 80%;
+  max-width: 160px;
+  margin: 2vw 0 1vw 0;
+  filter: brightness(1.1) drop-shadow(0 0 0.5vw #fff6);
+}
+.reth-scripts-panel-img-flip {
+  transform: scaleX(-1);
+}
+.reth-scripts-panel-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0; top: 0;
+  pointer-events: none;
+}
+.reth-scripts-star {
+  position: absolute;
+  width: 1.5vw;
+  height: 1.5vw;
+  min-width: 16px;
+  min-height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 0.5vw #fff8;
+}
+.reth-scripts-content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw 1vw 1vw 1vw;
+  z-index: 5;
+}
+.reth-scripts-title {
+  font-size: 4vw;
+  color: #fff;
+  margin-bottom: 0.5vw;
+  font-family: var(--font-title);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.reth-scripts-line {
+  width: 40%;
+  height: 2px;
+  background: #fff;
+  margin: 0.5vw auto 1.5vw auto;
+  opacity: 0.5;
+  border-radius: 2px;
+}
+.reth-scripts-subtitle {
+  color: #fff;
+  font-size: 1.5vw;
+  margin-bottom: 2vw;
+  opacity: 0.9;
+  text-align: center;
+}
+.reth-scripts-categories {
+  display: flex;
+  flex-direction: row;
+  gap: 6vw;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 2vw;
+}
+.reth-scripts-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.reth-scripts-icon-wrap {
+  width: 16vw;
+  min-width: 120px;
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1vw 0 #fff2, 0 0 2vw 0 #fff1;
+  margin-bottom: 0.5vw;
+}
+.reth-scripts-icon {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 0.7vw #fff8);
+}
+.reth-scripts-label {
+  color: #fff;
+  font-size: 1.5vw;
+  letter-spacing: 0.04em;
+  margin-top: 0.5vw;
+  font-family: var(--font-content);
+}
+.reth-scripts-icon-link {
+  display: block;
+  border-radius: 50%;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.reth-scripts-icon-link:hover .reth-scripts-icon-wrap,
+.reth-scripts-icon-link:focus .reth-scripts-icon-wrap {
+  box-shadow: 0 0 2vw 0 #fff8, 0 0 4vw 0 #fff4;
+  transform: scale(1.07);
+}
+@media (max-width: 900px) {
+  .reth-scripts-frame { width: 98vw; height: auto; min-height: 0; }
+  .reth-scripts-panel { width: 28vw; min-width: 90px; }
+  .reth-scripts-content { padding: 4vw 1vw; }
+  .reth-scripts-title { font-size: 7vw; }
+  .reth-scripts-subtitle { font-size: 3vw; }
+  .reth-scripts-categories { gap: 4vw; }
+  .reth-scripts-icon-wrap { width: 28vw; min-width: 80px; max-width: 180px; }
+  .reth-scripts-label { font-size: 3vw; }
+}
+@media (max-width: 600px) {
+  .reth-scripts-frame { flex-direction: column; width: 99vw; height: auto; min-height: 0; }
+  .reth-scripts-panel { width: 80vw; min-width: 60px; max-width: 99vw; flex-direction: row; justify-content: flex-start; margin: 0 auto; }
+  .reth-scripts-panel-img { width: 30vw; max-width: 80px; margin: 2vw 0 1vw 0; }
+  .reth-scripts-content { width: 99vw; padding: 8vw 1vw; }
+  .reth-scripts-title { font-size: 9vw; }
+  .reth-scripts-subtitle { font-size: 4vw; }
+  .reth-scripts-categories { gap: 2vw; }
+  .reth-scripts-icon-wrap { width: 60vw; min-width: 90px; max-width: 180px; }
+  .reth-scripts-label { font-size: 4vw; }
+}
 </style> 
