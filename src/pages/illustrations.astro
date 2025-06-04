@@ -5,33 +5,175 @@ import AnimatedStars from '../components/AnimatedStars.astro';
 ---
 
 <Layout title="Illustrations">
-	<div style="width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; position: relative;">
-		<a href="/" class="banner-sun banner-sun-left" style="width: 20%; min-width: 120px; max-width: 350px; text-decoration: none;">
-			<img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
+	<div class="illustrations-border">
+		<a href="/" class="banner-sun banner-sun-left" aria-label="Return to home">
+			<img src="/img/Sol.png" alt="Sun" class="banner-sun-img" loading="lazy" />
 		</a>
-		<div style="width: 60%; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 3rem; padding: 0 2vw; z-index: 2;">
-			<div style="text-align: center;">
+		<div class="illustrations-main">
+			<div class="illustrations-header">
 				<h1>Illustrations</h1>
-				<p class="banner-subtitle">Creative Artwork</p>
-			</div>
-			<div class="category-grid">
-				<a href="/illustrations/content" class="category-item" target="_blank">
-					<div class="category-icon">
-						<img src="/img/Ojo.png" alt="Illustration" />
-					</div>
-				</a>
+				<p class="banner-subtitle">I have to do more here and end my drawings... T.T</p>
 			</div>
 		</div>
-		<a href="/" class="banner-sun banner-sun-right" style="width: 20%; min-width: 120px; max-width: 350px; text-decoration: none;">
-			<img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
+		<a href="/" class="banner-sun banner-sun-right" aria-label="Return to home">
+			<img src="/img/Sol.png" alt="Sun" class="banner-sun-img" loading="lazy" />
 		</a>
+		<img src="/img/Nube.png" class="cloud cloud-topleft" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-topmid" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-topright" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-leftmid" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-rightmid" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-bottomleft" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-bottommid" alt="" aria-hidden="true" loading="lazy" />
+		<img src="/img/Nube.png" class="cloud cloud-bottomright" alt="" aria-hidden="true" loading="lazy" />
 	</div>
 	<AnimatedStars count={16} />
 </Layout>
 
 <style>
 	@import url('../styles/global.css');
+
+	:root {
+		--cloud-animation-duration: 20s;
+		--sun-animation-duration: 32s;
+		--cloud-opacity: 0.7;
+		--cloud-hover-opacity: 0.9;
+	}
+
+	.illustrations-border {
+		width: 100vw;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background: #5c1818;
+		box-sizing: border-box;
+		padding: 0 3vw;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.illustrations-header {
+		text-align: center;
+		z-index: 2;
+	}
+
+	.cloud {
+		position: absolute;
+		width: 10vw;
+		min-width: 6vw;
+		max-width: 14vw;
+		opacity: var(--cloud-opacity);
+		pointer-events: none;
+		z-index: 1;
+		filter: blur(0.2vw) brightness(1.1);
+		will-change: transform, opacity;
+	}
+
+	.cloud-topleft {
+		top: 2vw;
+		left: 2vw;
+		animation: cloud-move-topleft var(--cloud-animation-duration) linear infinite alternate;
+	}
+
+	.cloud-topmid {
+		top: 1vw;
+		left: 45vw;
+		width: 8vw;
+		animation: cloud-move-topmid var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 2s;
+	}
+
+	.cloud-topright {
+		top: 3vw;
+		right: 2vw;
+		animation: cloud-move-topright var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 1s;
+	}
+
+	.cloud-leftmid {
+		top: 40vh;
+		left: 0vw;
+		width: 7vw;
+		animation: cloud-move-leftmid var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 3s;
+	}
+
+	.cloud-rightmid {
+		top: 50vh;
+		right: 0vw;
+		width: 7vw;
+		animation: cloud-move-rightmid var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 4s;
+	}
+
+	.cloud-bottomleft {
+		bottom: 2vw;
+		left: 3vw;
+		animation: cloud-move-bottomleft var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 2s;
+	}
+
+	.cloud-bottommid {
+		bottom: 1vw;
+		left: 44vw;
+		width: 8vw;
+		animation: cloud-move-bottommid var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 1s;
+	}
+
+	.cloud-bottomright {
+		bottom: 2vw;
+		right: 2vw;
+		animation: cloud-move-bottomright var(--cloud-animation-duration) linear infinite alternate;
+		animation-delay: 0.5s;
+	}
+
+	@keyframes cloud-move-topleft {
+		0% { transform: translate(-10%, -10%); opacity: var(--cloud-opacity); }
+		100% { transform: translate(10%, 10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-topmid {
+		0% { transform: translateY(-10%); opacity: var(--cloud-opacity); }
+		100% { transform: translateY(10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-topright {
+		0% { transform: translate(10%, -10%); opacity: var(--cloud-opacity); }
+		100% { transform: translate(-10%, 10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-leftmid {
+		0% { transform: translateX(-10%); opacity: var(--cloud-opacity); }
+		100% { transform: translateX(10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-rightmid {
+		0% { transform: translateX(10%); opacity: var(--cloud-opacity); }
+		100% { transform: translateX(-10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-bottomleft {
+		0% { transform: translate(-10%, 10%); opacity: var(--cloud-opacity); }
+		100% { transform: translate(10%, -10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-bottommid {
+		0% { transform: translateY(10%); opacity: var(--cloud-opacity); }
+		100% { transform: translateY(-10%); opacity: var(--cloud-hover-opacity); }
+	}
+
+	@keyframes cloud-move-bottomright {
+		0% { transform: translate(10%, 10%); opacity: var(--cloud-opacity); }
+		100% { transform: translate(-10%, -10%); opacity: var(--cloud-hover-opacity); }
+	}
+
 	.banner-sun {
+		aspect-ratio: 1/1;
+		width: 18vw;
+		min-width: 8vw;
+		max-width: 25vw;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -39,49 +181,83 @@ import AnimatedStars from '../components/AnimatedStars.astro';
 		overflow: hidden;
 		margin: 0;
 		padding: 0;
+		text-decoration: none;
+		transition: transform 0.3s ease;
 	}
+
+	.banner-sun:hover {
+		transform: scale(1.05);
+	}
+
+	.banner-sun-img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		aspect-ratio: 1/1;
+		animation: sun-rotate-illu var(--sun-animation-duration) linear infinite;
+		will-change: transform;
+		display: block;
+	}
+
+	@keyframes sun-rotate-illu {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+
+	.illustrations-main {
+		width: 60vw;
+		min-width: 20vw;
+		max-width: 80vw;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3vw;
+		padding: 0 2vw;
+		z-index: 2;
+	}
+
 	.banner-subtitle {
-		font-size: 1.5rem;
+		font-size: 2vw;
 		color: #fff;
 		margin: 0;
 		opacity: 0.9;
 	}
-	.category-grid {
-		display: flex;
-		justify-content: center;
-		gap: 4rem;
-	}
-	.category-item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.5rem;
-		text-decoration: none;
-		transition: transform 0.3s ease;
-		padding: 1rem;
-	}
-	.category-item:hover {
-		transform: translateY(-5px);
-	}
-	.category-icon {
-		width: 100px;
-		height: 100px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-bottom: 1rem;
-	}
-	.category-icon img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
+
 	@media (max-width: 900px) {
-		h1 { font-size: 6vw; }
-		.banner-sun img { width: 22vw; }
+		h1 { 
+			font-size: 6vw;
+			margin: 0;
+		}
+		.banner-sun { 
+			width: 22vw;
+		}
+		.illustrations-main { 
+			width: 80vw;
+		}
+		.banner-subtitle { 
+			font-size: 3vw;
+		}
+		.cloud { 
+			width: 16vw;
+		}
 	}
+
 	@media (max-width: 600px) {
-		h1 { font-size: 8vw; }
-		.banner-sun img { width: 14vw; }
+		h1 { 
+			font-size: 8vw;
+			margin: 0;
+		}
+		.banner-sun { 
+			width: 14vw;
+		}
+		.illustrations-main { 
+			width: 96vw;
+		}
+		.banner-subtitle { 
+			font-size: 5vw;
+		}
+		.cloud { 
+			width: 22vw;
+		}
 	}
 </style> 

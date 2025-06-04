@@ -1,47 +1,155 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const title = "Autorretrato - Animación";
+const description = "Animación de autorretrato creada por RETH, mostrando un trabajo creativo y personal.";
 ---
-<Layout title="Uno">
+
+<Layout title={title} description={description}>
   <div class="reth-scripts-bg">
-    <a href="/" class="reth-scripts-sol-deco-link">
-      <img src="/img/SolYLuna.png" alt="Sol y Luna" class="reth-scripts-sol-deco" />
+    <a href="/" class="reth-scripts-sol-deco-link" aria-label="Volver al inicio">
+      <img 
+        src="/img/SolYLuna.png" 
+        alt="Sol y Luna" 
+        class="reth-scripts-sol-deco" 
+        loading="lazy"
+        width="220"
+        height="220"
+      />
     </a>
-    <div class="reth-scripts-frame">
-      <h1 class="reth-anim-title">Uno</h1>
+    <div class="reth-scripts-frame center-video-frame">
+      <video 
+        class="autorretrato-video" 
+        src="/animaciones/Autorretrato-kenn.mp4" 
+        controls 
+        playsinline 
+        preload="metadata"
+        title="Autorretrato animado"
+        poster="/img/Me.png"
+      >
+        <track 
+          kind="captions" 
+          src="/animaciones/Autorretrato-kenn.vtt" 
+          label="Español" 
+          default 
+        />
+        Tu navegador no soporta el elemento de video.
+      </video>
       <div class="reth-scripts-frame-deco"></div>
     </div>
   </div>
 </Layout>
+
 <style>
-@import url('../../styles/global.css');
-.reth-anim-title {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 4vw;
-  font-family: var(--font-title);
-  letter-spacing: 0.04em;
-  text-align: center;
-  z-index: 10;
-}
-.reth-scripts-sol-deco-link {
-  position: absolute;
-  top: 0.8vw;
-  left: 1vw;
-  z-index: 10;
-  display: block;
-  width: 13vw;
-  min-width: 120px;
-  max-width: 220px;
-  height: auto;
-  cursor: pointer;
-}
-.reth-scripts-sol-deco {
-  width: 100%;
-  height: auto;
-  opacity: 0.97;
-  pointer-events: none;
-}
+  @import url('../../styles/global.css');
+
+  :root {
+    --video-max-width: 70vw;
+    --video-max-height: 70vh;
+    --video-border-radius: 1vw;
+    --video-shadow: 0 0 2vw #0008;
+    --video-bg: #222;
+    --sol-size: 13vw;
+    --sol-min-size: 120px;
+    --sol-max-size: 220px;
+    --sol-opacity: 0.97;
+    --transition-duration: 0.3s;
+  }
+
+  .center-video-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 2;
+  }
+
+  .reth-scripts-sol-deco-link {
+    position: absolute;
+    top: 0.8vw;
+    left: 1vw;
+    z-index: 10;
+    display: block;
+    width: var(--sol-size);
+    min-width: var(--sol-min-size);
+    max-width: var(--sol-max-size);
+    height: auto;
+    cursor: pointer;
+    transition: transform var(--transition-duration) ease;
+  }
+
+  .reth-scripts-sol-deco-link:hover {
+    transform: scale(1.05);
+  }
+
+  .reth-scripts-sol-deco {
+    width: 100%;
+    height: auto;
+    opacity: var(--sol-opacity);
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .autorretrato-video {
+    display: block;
+    margin: 0 auto;
+    max-width: var(--video-max-width);
+    max-height: var(--video-max-height);
+    width: 100%;
+    border-radius: var(--video-border-radius);
+    box-shadow: var(--video-shadow);
+    background: var(--video-bg);
+    z-index: 5;
+    transition: transform var(--transition-duration) ease,
+                box-shadow var(--transition-duration) ease;
+  }
+
+  .autorretrato-video:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 3vw #000c;
+  }
+
+  .reth-scripts-frame-deco {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--video-border-radius);
+    border: 0.2vw solid rgba(255,255,255,0.13);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (max-width: 900px) {
+    :root {
+      --video-max-width: 85vw;
+      --video-max-height: 80vh;
+      --sol-size: 18vw;
+    }
+  }
+
+  @media (max-width: 600px) {
+    :root {
+      --video-max-width: 95vw;
+      --video-max-height: 90vh;
+      --sol-size: 25vw;
+    }
+
+    .reth-scripts-sol-deco-link {
+      top: 1.5vw;
+      left: 2vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reth-scripts-sol-deco-link,
+    .autorretrato-video {
+      transition: none;
+    }
+
+    .reth-scripts-sol-deco-link:hover,
+    .autorretrato-video:hover {
+      transform: none;
+    }
+  }
 </style> 

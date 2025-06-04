@@ -58,13 +58,13 @@ import AnimatedStars from '../components/AnimatedStars.astro';
   }
   .link-item {
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 2.5vw;
     text-decoration: none;
     background: rgba(255,255,255,0.08);
-    padding: 0.7rem 2.5rem;
-    border-radius: 2rem;
+    padding: 1vw 4vw;
+    border-radius: 2vw;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 0.3vw 1vw 0 rgba(0,0,0,0.10);
     font-family: inherit;
     letter-spacing: 0.03em;
   }
@@ -76,10 +76,12 @@ import AnimatedStars from '../components/AnimatedStars.astro';
   @media (max-width: 900px) {
     h1 { font-size: 6vw; }
     .banner-sun img { width: 22vw; }
+    .link-item { font-size: 4vw; padding: 2vw 6vw; }
   }
   @media (max-width: 600px) {
     h1 { font-size: 8vw; }
     .banner-sun img { width: 14vw; }
+    .link-item { font-size: 6vw; padding: 3vw 8vw; }
   }
   .animated-bg {
     position: fixed;
@@ -122,4 +124,11 @@ import AnimatedStars from '../components/AnimatedStars.astro';
   @keyframes planet-move1 { 0% { transform: translateY(0); } 100% { transform: translateY(-18px) scale(1.1); } }
   @keyframes planet-move2 { 0% { transform: translateX(0); } 100% { transform: translateX(-22px) scale(0.95); } }
   @keyframes comet-move1 { 0% { transform: translateX(0) scaleX(1); opacity: 0.7; } 100% { transform: translateX(60px) scaleX(1.2); opacity: 0.2; } }
+  .banner-sun img {
+    animation: sun-rotate 8s linear infinite;
+  }
+  @keyframes sun-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 </style> 

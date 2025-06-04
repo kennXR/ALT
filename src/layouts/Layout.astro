@@ -1,22 +1,67 @@
 ---
-import Footer from '../components/Footer.astro';
 import Preload from '../components/Preload.astro';
 import '../styles/global.css';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title,
+	description = "RETH - Creative development portfolio showcasing illustrations, animations, photographs and scripts."
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/img/Sol.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="/img/Sol.png" />
+		<link rel="apple-touch-icon" href="/img/Sol.png" />
+		<meta name="theme-color" content="#5c1818" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/img/Sol.png" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/img/Sol.png" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Preload fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link 
+			href="https://fonts.googleapis.com/css2?family=Romanesco&family=Edu+NSW+ACT+Foundation:wght@400;500;600&display=swap" 
+			rel="stylesheet"
+		/>
+		
+		<!-- Preload critical fonts -->
+		<link 
+			rel="preload" 
+			href="https://fonts.gstatic.com/s/romanesco/v21/w8gYH2ozQOY7_r_J7mSX1XYKmOo.woff2" 
+			as="font" 
+			type="font/woff2" 
+			crossorigin 
+		/>
+		
 		<title>{title}</title>
 	</head>
 	<body>
@@ -24,6 +69,101 @@ const { title } = Astro.props;
 		<main>
 			<slot />
 		</main>
-		<Footer />
 	</body>
 </html>
+
+<style is:global>
+	:root {
+		--font-title: 'Romanesco', cursive;
+		--font-content: 'Edu NSW ACT Foundation', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: var(--font-content);
+		line-height: 1.5;
+		overflow: hidden;
+		background-color: #5c1818;
+		color: #fff;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	main {
+		width: 100%;
+		min-height: 100vh;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	button {
+		background: none;
+		border: none;
+		cursor: pointer;
+		font: inherit;
+		color: inherit;
+	}
+
+	/* Font fallback classes */
+	.font-title {
+		font-family: var(--font-title);
+	}
+
+	.font-content {
+		font-family: var(--font-content);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+
+	/* Font loading fallback */
+	.fonts-loading {
+		visibility: hidden;
+	}
+
+	.fonts-loaded {
+		visibility: visible;
+	}
+</style>
+
+<script is:inline>
+	// Font loading detection
+	document.documentElement.classList.add('fonts-loading');
+
+	if ('fonts' in document) {
+		Promise.all([
+			document.fonts.load('1em Romanesco'),
+			document.fonts.load('1em "Edu NSW ACT Foundation"')
+		]).then(() => {
+			document.documentElement.classList.remove('fonts-loading');
+			document.documentElement.classList.add('fonts-loaded');
+		});
+	} else {
+		document.documentElement.classList.remove('fonts-loading');
+		document.documentElement.classList.add('fonts-loaded');
+	}
+</script>

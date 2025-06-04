@@ -4,138 +4,164 @@ import AnimatedStars from '../components/AnimatedStars.astro';
 ---
 
 <Layout title="Animations">
-  <div style="width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; position: relative;">
-    <a href="/" class="banner-sun banner-sun-left" style="width: 20%; min-width: 8%; max-width: 25%; text-decoration: none; top: -6vw; position: relative;">
-      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
-    </a>
-    <div style="width: 60%; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 0; padding: 0 2vw; z-index: 2;">
-      <div style="text-align: center;">
-        <h1>Animations</h1>
-        <p class="banner-subtitle">A bit of movement</p>
-      </div>
-      <div class="reth-animations-row">
-        <a href="/animations/uno" class="reth-animations-link"><img src="/img/SolYLuna.png" alt="Sol y Luna 1" class="reth-animations-icon" /></a>
-        <a href="/animations/dos" class="reth-animations-link"><img src="/img/SolYLuna.png" alt="Sol y Luna 2" class="reth-animations-icon" /></a>
-        <a href="/animations/tres" class="reth-animations-link"><img src="/img/SolYLuna.png" alt="Sol y Luna 3" class="reth-animations-icon" /></a>
-        <a href="/animations/cuatro" class="reth-animations-link"><img src="/img/SolYLuna.png" alt="Sol y Luna 4" class="reth-animations-icon" /></a>
+  <div class="decorative-border">
+    <div class="corner-sun">
+      <a href="/">
+        <img src="/img/Sol.png" alt="Sun" class="corner-sun-img" />
+      </a>
+      <div class="corner-stars">
+        <span class="star" style="top: 12%; left: 60%;"></span>
+        <span class="star" style="top: 30%; left: 80%;"></span>
+        <span class="star" style="top: 40%; left: 50%;"></span>
       </div>
     </div>
-    <a href="/" class="banner-sun banner-sun-right" style="width: 20%; min-width: 8%; max-width: 25%; text-decoration: none; top: -6vw; position: relative;">
-      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
-    </a>
+    <div class="main-content">
+      <h1 class="main-title">Animations</h1>
+      <div class="main-subtitle">A bit of my broken mind</div>
+      <div class="sols-row">
+        <a href="/animations/uno"><img src="/img/SolYLuna.png" alt="Sol y Luna 1" class="sol-icon" /></a>
+        <a href="/animations/dos"><img src="/img/SolYLuna.png" alt="Sol y Luna 2" class="sol-icon" /></a>
+        <a href="/animations/tres"><img src="/img/SolYLuna.png" alt="Sol y Luna 3" class="sol-icon" /></a>
+        <a href="/animations/cuatro"><img src="/img/SolYLuna.png" alt="Sol y Luna 4" class="sol-icon" /></a>
+      </div>
+    </div>
   </div>
   <AnimatedStars count={16} />
 </Layout>
 
 <style>
   @import url('../styles/global.css');
-  .banner-sun {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+  html, body {
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
-  .banner-subtitle {
-    font-size: 1.5rem;
-    color: #fff;
-    margin: 0;
-    opacity: 0.9;
-  }
-  .category-grid {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-  }
-  .category-item {
+  .decorative-border {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: 0.3vw solid #fff;
+    border-radius: 2vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #5c1818;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    padding: 1rem;
-  }
-  .category-item:hover {
-    transform: translateY(-5px);
-  }
-  .category-icon {
-    width: 12%;
-    height: 12%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
   }
-  .category-icon img {
+  .decorative-border:before, .decorative-border:after {
+    content: '';
+    position: absolute;
+    border: 0.3vw solid #fff;
+    border-radius: 2vw;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    pointer-events: none;
+    left: 0; top: 0;
   }
-  @media (max-width: 900px) {
-    h1 { font-size: 6vw; }
-    .banner-sun img { width: 22vw; }
+  .decorative-border:before {
+    border-top-left-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+    border-width: 0.5vw 0 0 0.5vw;
+    width: 99%;
+    height: 99%;
   }
-  @media (max-width: 600px) {
-    h1 { font-size: 8vw; }
-    .banner-sun img { width: 14vw; }
+  .decorative-border:after {
+    border-bottom-left-radius: 4vw;
+    border-top-right-radius: 4vw;
+    border-width: 0 0.5vw 0.5vw 0;
+    width: 99%;
+    height: 99%;
   }
-  .animated-bg {
-    position: fixed;
-    inset: 0;
+  .corner-sun {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 13vw;
+    height: 13vw;
+    z-index: 2;
+  }
+  .corner-sun-img {
+    width: 80%;
+    height: auto;
+    margin: 7% 0 0 7%;
+    filter: drop-shadow(0 0 1vw #fff8);
+  }
+  .corner-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 0.7vw;
+    height: 0.7vw;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0.5vw #fff8;
+    opacity: 0.8;
+  }
+  .main-content {
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
-    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 1;
   }
-  .bg-star {
-    position: absolute;
-    opacity: 0.8;
-    animation: star-twinkle 2.5s infinite alternate;
+  .main-title {
+    color: #fff;
+    font-size: 5vw;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 0 1vw 0;
+    letter-spacing: 0.1em;
   }
-  .star1 { left: 20vw; top: 18vh; animation-delay: 0.5s; }
-  .star2 { right: 18vw; top: 22vh; animation-delay: 1.2s; }
-  .star3 { left: 40vw; top: 10vh; animation-delay: 1.7s; }
-  .star4 { left: 60vw; top: 30vh; animation-delay: 0.9s; }
-  .star5 { right: 10vw; bottom: 18vh; animation-delay: 2.2s; }
-  @keyframes star-twinkle {
-    0% { opacity: 0.8; transform: scale(1); }
-    100% { opacity: 0.3; transform: scale(1.2); }
+  .main-subtitle {
+    color: #fff;
+    font-size: 2vw;
+    text-align: center;
+    margin-bottom: 4vw;
+    opacity: 0.9;
   }
-  .reth-animations-row {
+  .sols-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5%;
+    gap: 5vw;
     width: 100%;
-    margin-top: 18vw;
-    margin-bottom: 4vw;
+    margin-top: 2vw;
   }
-  .reth-animations-icon {
-    width: 25%;
-    min-width: 18%;
-    max-width: 32%;
+  .sol-icon {
+    width: 15vw;
+    max-width: 22vw;
+    min-width: 10vw;
     height: auto;
-    opacity: 0.97;
     filter: drop-shadow(0 0 0.7vw #fff8);
     transition: transform 0.2s;
   }
-  .reth-animations-icon:hover {
+  .sol-icon:hover {
     transform: scale(1.07) rotate(-2deg);
     filter: drop-shadow(0 0 1vw #fff8);
   }
-  .reth-animations-link {
-    display: block;
-    border-radius: 50%;
-    transition: box-shadow 0.2s, filter 0.2s, transform 0.2s;
+  @media (max-width: 900px) {
+    .main-title { font-size: 8vw; }
+    .main-subtitle { font-size: 3vw; }
+    .sol-icon { width: 22vw; }
+    .corner-sun { width: 18vw; height: 18vw; }
   }
-  .reth-animations-link:hover .reth-animations-icon,
-  .reth-animations-link:focus .reth-animations-icon {
-    box-shadow: 0 0 2vw 1vw #fff8, 0 0 4vw 2vw #fff4;
-    filter: drop-shadow(0 0 1vw #fff8);
-    transform: scale(1.09) rotate(-2deg);
+  @media (max-width: 600px) {
+    .main-title { font-size: 11vw; }
+    .main-subtitle { font-size: 5vw; }
+    .sol-icon { width: 28vw; }
+    .corner-sun { width: 25vw; height: 25vw; }
   }
 </style> 

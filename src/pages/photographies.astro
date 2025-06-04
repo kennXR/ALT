@@ -4,118 +4,225 @@ import AnimatedStars from '../components/AnimatedStars.astro';
 ---
 
 <Layout title="Photographies">
-  <div style="width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; position: relative;">
-    <a href="/" class="banner-sun banner-sun-left" style="width: 20%; min-width: 120px; max-width: 350px; text-decoration: none;">
-      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
-    </a>
-    <div style="width: 60%; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 3rem; padding: 0 2vw; z-index: 2;">
-      <div style="text-align: center;">
-        <h1>Photographies</h1>
-        <p class="banner-subtitle">Capture the moment</p>
-      </div>
-      <div class="category-grid">
-        <a href="/photographies/content" class="category-item" target="_blank">
-          <div class="category-icon">
-            <img src="/img/Foto.png" alt="Photography" />
-          </div>
-        </a>
+  <div class="photo-frame">
+    <!-- Sol decorativo esquina superior izquierda -->
+    <div class="corner-sun">
+      <a href="/">
+        <img src="/img/Sol.png" alt="Sun" class="corner-sun-img" />
+      </a>
+      <div class="corner-stars">
+        <span class="star" style="top: 12%; left: 60%;"></span>
+        <span class="star" style="top: 30%; left: 80%;"></span>
+        <span class="star" style="top: 40%; left: 50%;"></span>
       </div>
     </div>
-    <a href="/" class="banner-sun banner-sun-right" style="width: 20%; min-width: 120px; max-width: 350px; text-decoration: none;">
-      <img src="/img/Sol.png" alt="Sun" style="width: 100%; height: auto; object-fit: contain;" />
-    </a>
+    <!-- Nubes decorativas arriba -->
+    <img src="/img/Nube.png" class="cloud cloud-topleft" alt="Nube decorativa" />
+    <img src="/img/Nube.png" class="cloud cloud-topright" alt="Nube decorativa" />
+    <!-- Marco y contenido principal -->
+    <div class="photo-content">
+      <h1 class="photo-title">Photographies</h1>
+      <div class="photo-suns-row">
+        <div class="photo-sun-block">
+          <a href="/photographies/bnw">
+            <img src="/img/SolYLuna.png" alt="Black and White" class="photo-sun" />
+          </a>
+          <div class="photo-sun-label">BLACK AND WHITE</div>
+        </div>
+        <div class="photo-sun-block">
+          <a href="/photographies/color">
+            <img src="/img/SolYLuna.png" alt="Color" class="photo-sun" />
+          </a>
+          <div class="photo-sun-label">COLOR</div>
+        </div>
+      </div>
+    </div>
+    <!-- Manos decorativas -->
+    <img src="/img/Mano.png" class="hand hand-left" alt="Mano decorativa izquierda" />
+    <img src="/img/Mano.png" class="hand hand-right" alt="Mano decorativa derecha" />
   </div>
   <AnimatedStars count={16} />
 </Layout>
 
 <style>
   @import url('../styles/global.css');
-  .banner-sun {
+  .photo-frame {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #8c2d2d;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .photo-content {
     position: relative;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  .banner-subtitle {
-    font-size: 1.5rem;
-    color: #fff;
-    margin: 0;
-    opacity: 0.9;
-  }
-  .category-grid {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-  }
-  .category-item {
+    width: 80vw;
+    max-width: 90vw;
+    min-width: 40vw;
+    min-height: 60vh;
+    margin: 0 auto;
+    background: #4a1313;
+    border-radius: 2vw;
+    border: 0.3vw solid #fff;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    padding: 1rem;
+    justify-content: flex-start;
+    padding: 4vw 2vw 2vw 2vw;
+    z-index: 2;
+    box-shadow: 0 0 2vw #0006;
   }
-  .category-item:hover {
-    transform: translateY(-5px);
+  .photo-title {
+    color: #fff;
+    font-size: 5vw;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 0 2vw 0;
+    letter-spacing: 0.1em;
   }
-  .category-icon {
-    width: 100px;
-    height: 100px;
+  .photo-suns-row {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-    margin-bottom: 1rem;
+    align-items: flex-end;
+    gap: 8vw;
+    width: 100%;
+    margin-top: 4vw;
   }
-  .category-icon img {
+  .photo-sun-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+  }
+  .photo-sun {
+    width: 18vw;
+    max-width: 22vw;
+    min-width: 10vw;
+    height: auto;
+    filter: drop-shadow(0 0 0.7vw #fff8);
+    transition: transform 0.2s;
+    animation: sun-rotate 18s linear infinite;
+  }
+  .photo-sun-label {
+    color: #fff;
+    font-size: 1.3vw;
+    margin-top: 1vw;
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+  /* Nubes decorativas */
+  .cloud {
+    position: absolute;
+    width: 18vw;
+    min-width: 8vw;
+    max-width: 28vw;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 3;
+    top: 0;
+  }
+  .cloud-topleft {
+    left: 4vw;
+    animation: cloud-move-topleft 18s linear infinite alternate;
+  }
+  .cloud-topright {
+    right: 4vw;
+    animation: cloud-move-topright 20s linear infinite alternate;
+  }
+  @keyframes cloud-move-topleft {
+    0% { transform: translateY(-10%) scale(1); }
+    100% { transform: translateY(10%) scale(1.08); }
+  }
+  @keyframes cloud-move-topright {
+    0% { transform: translateY(-10%) scale(1); }
+    100% { transform: translateY(10%) scale(1.1); }
+  }
+  /* Manos decorativas */
+  .hand {
+    position: absolute;
+    width: 22vw;
+    min-width: 10vw;
+    max-width: 30vw;
+    bottom: -2vw;
+    z-index: 4;
+    opacity: 0.97;
+    pointer-events: none;
+    animation: hand-float 6s ease-in-out infinite alternate;
+  }
+  .hand-left {
+    left: -4vw;
+    transform: scaleX(-1) rotate(-8deg);
+    animation-delay: 0s;
+    animation-name: hand-float-left;
+  }
+  .hand-right {
+    right: -4vw;
+    transform: rotate(8deg);
+    animation-delay: 2s;
+    animation-name: hand-float-right;
+  }
+  @keyframes hand-float-left {
+    0% { transform: translateY(0) scaleX(-1) rotate(-8deg); }
+    100% { transform: translateY(-2vw) scaleX(-1) rotate(-8deg); }
+  }
+  @keyframes hand-float-right {
+    0% { transform: translateY(0) rotate(8deg); }
+    100% { transform: translateY(-2vw) rotate(8deg); }
+  }
+  /* Sol decorativo esquina superior izquierda */
+  .corner-sun {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    height: 10vw;
+    z-index: 10;
+  }
+  .corner-sun-img {
+    width: 100%;
+    height: auto;
+    margin: 7% 0 0 7%;
+    filter: drop-shadow(0 0 1vw #fff8);
+  }
+  .corner-stars {
+    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 0.7vw;
+    height: 0.7vw;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0.5vw #fff8;
+    opacity: 0.8;
+  }
+  @keyframes sun-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
   @media (max-width: 900px) {
-    h1 { font-size: 6vw; }
-    .banner-sun img { width: 22vw; }
+    .photo-title { font-size: 8vw; }
+    .photo-sun { width: 22vw; }
+    .photo-content { width: 96vw; }
+    .photo-sun-label { font-size: 2vw; }
+    .cloud { width: 28vw; }
+    .hand { width: 30vw; }
+    .corner-sun { width: 18vw; height: 18vw; }
   }
   @media (max-width: 600px) {
-    h1 { font-size: 8vw; }
-    .banner-sun img { width: 14vw; }
-  }
-  .animated-bg {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .bg-moon {
-    position: absolute;
-    width: 8vw;
-    min-width: 60px;
-    opacity: 0.7;
-    animation: moon-float 7s ease-in-out infinite alternate;
-  }
-  .moon1 { left: 5vw; top: 10vh; animation-delay: 0s; }
-  .moon2 { right: 7vw; bottom: 12vh; transform: scaleX(-1); animation-delay: 2s; }
-  @keyframes moon-float {
-    0% { transform: translateY(0) scaleX(1); }
-    100% { transform: translateY(-30px) scaleX(1); }
-  }
-  .bg-star {
-    position: absolute;
-    opacity: 0.8;
-    animation: star-twinkle 2.5s infinite alternate;
-  }
-  .star1 { left: 20vw; top: 18vh; animation-delay: 0.5s; }
-  .star2 { right: 18vw; top: 22vh; animation-delay: 1.2s; }
-  .star3 { left: 40vw; top: 10vh; animation-delay: 1.7s; }
-  .star4 { left: 60vw; top: 30vh; animation-delay: 0.9s; }
-  .star5 { right: 10vw; bottom: 18vh; animation-delay: 2.2s; }
-  @keyframes star-twinkle {
-    0% { opacity: 0.8; transform: scale(1); }
-    100% { opacity: 0.3; transform: scale(1.2); }
+    .photo-title { font-size: 11vw; }
+    .photo-sun { width: 28vw; }
+    .photo-content { width: 99vw; }
+    .photo-sun-label { font-size: 3vw; }
+    .cloud { width: 38vw; }
+    .hand { width: 40vw; }
+    .corner-sun { width: 25vw; height: 25vw; }
   }
 </style> 
