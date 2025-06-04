@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://alt-me.vercel.app',
+  site: "https://evryingreth.github.io/RETH",
   integrations: [],
   output: 'static',
   build: {
