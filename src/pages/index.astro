@@ -7,8 +7,8 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="RETH – Creative development">
 	<div class="reth-bg-texture">
 		<div class="reth-frame">
-			<img src="/img/Sol.png" alt="Sol" class="reth-sun reth-sun-left" draggable="false" />
-			<img src="/img/Sol.png" alt="Sol" class="reth-sun reth-sun-right" draggable="false" />
+			<img src="/img/Sol.png" alt="Sol" class="reth-sun reth-sun-left" draggable="false" loading="lazy" />
+			<img src="/img/Sol.png" alt="Sol" class="reth-sun reth-sun-right" draggable="false" loading="lazy" />
 			
 			<div class="reth-stars">
 				<svg class="reth-star reth-star-1" viewBox="0 0 32 32" style="width: 2.5vw; height: 2.5vw;"><polygon points="16,2 18,14 30,16 18,18 16,30 14,18 2,16 14,14" fill="#fff" opacity="0.7"/></svg>
@@ -21,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<div class="reth-content">
 				<div class="reth-title">
-					<a href="/about" class="reth-title-link font-title">RETH</a>
+					<a href="/about" class="reth-title-link font-mixed">RETH</a>
 				</div>
 				<div class="reth-line"></div>
 				<div class="reth-subtitle">Creative development</div>
@@ -30,25 +30,25 @@ import Layout from '../layouts/Layout.astro';
 					<div class="reth-icon-col">
 						<span class="reth-icon-label">Illustrations</span>
 						<a href="/illustrations">
-							<img src="/img/Ojo.png" alt="Illustrations" class="reth-icon-img" />
+							<img src="/img/Ojo.png" alt="Illustrations" class="reth-icon-img" loading="lazy" />
 						</a>
 					</div>
 					<div class="reth-icon-col">
 						<span class="reth-icon-label">Animations</span>
 						<a href="/animations">
-							<img src="/img/Animacion.png" alt="Animations" class="reth-icon-img" />
+							<img src="/img/Animacion.png" alt="Animations" class="reth-icon-img" loading="lazy" />
 						</a>
 					</div>
 					<div class="reth-icon-col">
 						<span class="reth-icon-label">Photographies</span>
 						<a href="/photographies">
-							<img src="/img/Foto.png" alt="Photographies" class="reth-icon-img" />
+							<img src="/img/Foto.png" alt="Photographies" class="reth-icon-img" loading="lazy" />
 						</a>
 					</div>
 					<div class="reth-icon-col">
 						<span class="reth-icon-label">Scripts</span>
 						<a href="/scripts">
-							<img src="/img/Scripts1.png" alt="Scripts" class="reth-icon-img" />
+							<img src="/img/Scripts1.png" alt="Scripts" class="reth-icon-img" loading="lazy" />
 						</a>
 					</div>
 				</div>
@@ -70,6 +70,15 @@ import Layout from '../layouts/Layout.astro';
 	--frame-shadow: 0 0 0 0.6vw #7a2323, 0 0 2vw 0 rgba(0,0,0,0.13);
 	--text-main: #fff;
 	--text-label: #cbb7a0;
+}
+
+@font-face {
+	font-family: 'TitleFont';
+	src: url('/fonts/your-title-font.woff2') format('woff2'),
+		 url('/fonts/your-title-font.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 html, body {
@@ -158,6 +167,27 @@ html, body {
 		padding: 0;
 		margin: 0;
 	}
+	.reth-title-link {
+		font-size: 12vw;
+	}
+	.reth-subtitle {
+		font-size: 4vw;
+		margin-bottom: 6vw;
+	}
+	.reth-icons-row {
+		flex-wrap: wrap;
+		gap: 6vw;
+		justify-content: center;
+	}
+	.reth-icon-col {
+		width: 40vw;
+	}
+	.reth-icon-label {
+		font-size: 3vw;
+	}
+	.reth-icon-img {
+		width: 15vw;
+	}
 }
 
 /* Marco decorativo */
@@ -226,6 +256,7 @@ html, body {
 .reth-star {
 	position: absolute;
 	animation: twinkle 4s ease-in-out infinite;
+	will-change: opacity;
 }
 
 .reth-star-1 { top: 15%; left: 20%; animation-delay: 0s; }
@@ -242,6 +273,7 @@ html, body {
 }
 
 .reth-title-link {
+	font-family: var(--font-title), var(--font-content), serif;
 	font-size: 8vw;
 	line-height: 1;
 	letter-spacing: 0.02em;
@@ -311,5 +343,9 @@ html, body {
 @keyframes twinkle {
 	0%, 100% { opacity: 0.3; }
 	50% { opacity: 1; }
+}
+
+.font-mixed {
+	font-family: var(--font-title), var(--font-content), serif;
 }
 </style>
