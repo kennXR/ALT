@@ -62,6 +62,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			crossorigin 
 		/>
 		
+		<!-- Preload critical images -->
+		<link rel="preload" as="image" href="/ALT/img/Sol.png" />
+		<link rel="preload" as="image" href="/ALT/img/Nube.png" />
+		<link rel="preload" as="image" href="/ALT/img/SolYLuna.png" />
+		<link rel="preload" as="image" href="/ALT/img/Mano.png" />
+		<link rel="preload" as="image" href="/ALT/img/Luna2.png" />
+		<link rel="preload" as="image" href="/ALT/img/Animacion.png" />
+		<link rel="preload" as="image" href="/ALT/img/Foto.png" />
+		<link rel="preload" as="image" href="/ALT/img/Ojo.png" />
+		<link rel="preload" as="image" href="/ALT/img/Scripts.png" />
+		<link rel="preload" as="image" href="/ALT/img/Scripts1.png" />
+		
 		<title>{title}</title>
 	</head>
 	<body>
